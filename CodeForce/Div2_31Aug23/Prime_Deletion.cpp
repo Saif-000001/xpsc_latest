@@ -14,30 +14,36 @@ typedef pair<int, int> pii;
 
 void TEST_CASES()
 {
-    int n, a, q;
-    cin >> n >> a >> q;
-
     string s;
     cin >> s;
-    int c = a, t = a, mx = a;
+
+    int ans;
     for (int i = 0; i < s.size(); i++)
     {
-        if (s[i] == '+')
+        int x = s[i] - 48;
+        for (int j = i + 1; j < s.size(); j++)
         {
-            c++;
-            t++;
-        }
-        else
-            c--;
-        mx = max(mx, c);
-    }
+            int y = s[j] - 48;
+            int d = x * 10 + y;
+            // cout<<d<<"\n";
+            bool flag = true;
+            for (int k = 2; k < d; k++)
+            {
+                if (d % k == 0)
+                {
+                    flag = false;
+                    break;
+                }
+            }
 
-    if (mx >= n)
-        cout << "YES\n";
-    else if (t >= n)
-        cout << "MAYBE\n";
-    else
-        cout << "NO\n";
+            if (flag == true)
+            {
+                ans = d;
+                break;
+            }
+        }
+    }
+    cout << ans << "\n";
 }
 
 int32_t main()
