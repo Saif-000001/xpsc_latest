@@ -16,36 +16,37 @@ void TEST_CASES()
 {
     int n;
     cin >> n;
-    vector<int> position[n + 1];
-    int ans[n + 1];
-    int m = n;
-    while (m--)
-    {
-        for (int i = 1; i < n; i++)
-        {
-            int x;
-            cin >> x;
-            position[x].push_back(i);
-        }
-    }
-
-    for (int i = 1; i <= n; i++)
-        sort(position[i].begin(), position[i].end());
-
+    int grid[n + 1][n];
     for (int i = 1; i <= n; i++)
     {
-        if (position[i][n - 2] == n - 1)
-        {
-            if (position[i][0] == n - 1)
-                ans[n] = i;
-            else
-                ans[n - 1] = i;
-        }
-        else
-            ans[position[i][n - 2]] = i;
+        for (int j = 1; j <= n - 1; j++)
+            cin >> grid[i][j];
     }
+
+    vector<int> cnt(n + 1);
     for (int i = 1; i <= n; i++)
-        cout << ans[i] << " ";
+        cnt[grid[i][1]]++;
+
+    int x, y;
+    for (int i = 1; i <= n; i++)
+    {
+        if (cnt[i] > 1)
+            x = i;
+        if (cnt[i] == 1)
+            y = i;
+    }
+    int row = 1;
+    for (int i = 1; i <= n; i++)
+    {
+        if (grid[i][1] == y)
+        {
+            row = i;
+            break;
+        }
+    }
+    cout << x << " ";
+    for (int i = 1; i <= n - 1; i++)
+        cout << grid[row][i] << " ";
     cout << "\n";
 }
 
