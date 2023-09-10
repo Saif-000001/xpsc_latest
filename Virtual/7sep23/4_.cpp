@@ -16,41 +16,37 @@ void TEST_CASES()
 {
     int n;
     cin >> n;
-    vector<int> a(n);
+    vector<int> a(n), prefix(n + 1);
     for (int i = 0; i < n; i++)
         cin >> a[i];
+
+    for (int i = 1; i <= n; i++)
+        prefix[i] = prefix[i - 1] + a[i - 1];
+
     int ans = 0;
-    bool f = false;
-    for (int i = 0; i < n - 1; i++)
+    for (int i = 0; i <= n; i++)
     {
-        if (a[i] != a[i + 1])
+        int target = prefix[i], cnt = 0, cur = 0;
+        for (int j = 0; j < n; j++)
         {
-            f = true;
-            break;
+            cur += a[j];
+            if (cur > target)
+            {
+                cnt = -1;
+                break;
+            }
+
+            if (cur == target)
+            {
+                cur = 0;
+                cnt++;
+            }
         }
+        if (cur == 0)
+            ans = max(ans, cnt);
     }
 
-    if (f == false)
-    {
-        cout << ans << '\n';
-        return;
-    }
-
-    for (int i = 0; i < n; i++)
-    {
-        int sum = a[i] + a[i + 1];
-        if (sum == a[i])
-        {
-            ans++;
-            break;
-        }
-        else
-        {
-            ans++;
-            i++;
-        }
-    }
-    cout << ans << "\n";
+    cout << n - ans << "\n";
 }
 
 int32_t main()
