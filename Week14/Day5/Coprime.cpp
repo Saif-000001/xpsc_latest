@@ -9,22 +9,22 @@ typedef long double ld;
 #define debug(args...)
 #endif
 const int MOD = 1000000007;
-const int N = 2e5 +5;
-typedef pair<int,int> pii;
+const int N = 2e5 + 5;
+typedef pair<int, int> pii;
 
 void TEST_CASES()
 {
     int n;
     cin >> n;
     vector<int> a[1005];
- 
+
     for (int i = 1; i <= n; i++)
     {
         int x;
         cin >> x;
         a[x].push_back(i);
     }
- 
+
     for (int i = 1; i <= 1000; i++)
     {
         for (int j = 1; j <= 1000; j++)
@@ -51,9 +51,9 @@ int32_t main()
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
 #endif
-    int t=1;
-    cin>>t;
-    while(t--)
+    int t = 1;
+    cin >> t;
+    while (t--)
     {
         TEST_CASES();
     }
