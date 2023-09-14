@@ -15,32 +15,19 @@ typedef pair<int, int> pii;
 void TEST_CASES()
 {
     int n;
-    cin >> n;
     string s;
-    cin >> s;
-    int f = s.find('1');
-    if (f > n - 3)
+    cin >> n >> s;
+    int pos = 0;
+    while (s[pos] != '1')
+        pos++;
+
+    for (int i = n - 3; i >= pos; i--)
     {
-        cout << s << "\n";
-        return;
+        s[i] = '1';
+        s[i + 1] = '0';
+        s[i + 2] = '0';
     }
-    else
-    {
-        int z = '0' * (n - f - 1);
-        cout << s[f+ 1] + z << "\n";
-        return;
-    }
-
-    //   n = int(input())
-    // s = input()
-    // f = s.find('1')
-    
-    // if f > n - 3:
-    //     return s
-    // z = '0' * (n - f - 1)
-    // return s[:f + 1] + z
-
-
+    cout << s << "\n";
 }
 
 int32_t main()

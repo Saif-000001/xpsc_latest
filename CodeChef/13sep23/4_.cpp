@@ -12,6 +12,18 @@ const int MOD = 1000000007;
 const int N = 2e5 + 5;
 typedef pair<int, int> pii;
 
+bool consecutive(vector<ll> a)
+{
+    for (int i = 1; i < a.size(); i++)
+    {
+        if ((a[i - 1] < a[i] && a[i] > a[i + 1]) || a[i - 1] > a[i] && a[i] < a[i + 1])
+            continue;
+        else
+            return false;
+    }
+    return true;
+}
+
 void TEST_CASES()
 {
     ll n;
@@ -19,15 +31,11 @@ void TEST_CASES()
     vector<ll> a(n);
     for (int i = 0; i < n; i++)
         cin >> a[i];
-
     sort(a.begin(), a.end());
-    bool f = true;
 
     int m;
     if (n & 1)
-    {
         m = n / 2 + 1;
-    }
     else
         m = n / 2;
 
@@ -47,27 +55,14 @@ void TEST_CASES()
         }
     }
 
-    for (int i = 1; i < ans.size() - 1; i++)
-    {
-        if ((ans[i] > ans[i - 1]) && (ans[i] > ans[i + 1]))
-            continue;
-        else if ((ans[i] < ans[i - 1]) && (ans[i] < ans[i + 1]))
-            continue;
-        else
-        {
-            f = false;
-            break;
-        }
-    }
-
-    if (f == true)
+    if (consecutive(ans))
     {
         for (auto i : ans)
             cout << i << " ";
         cout << "\n";
     }
     else
-        cout << "-1\n";
+        cout << -1 << "\n";
 }
 
 int32_t main()
