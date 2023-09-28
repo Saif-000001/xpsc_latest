@@ -6,6 +6,7 @@
         "complex": "cpp",
         "random": "cpp",
         "ostream": "cpp",
-        "span": "cpp"
+        "span": "cpp",
+        "valarray": "cpp"
     }
 }
