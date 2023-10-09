@@ -16,7 +16,7 @@ void TEST_CASES()
 {
     int n;
     cin >> n;
-    int ns = 0, ps = 0;
+    int ne = 0, ps = 0;
     for (int i = 0; i < n - 1; i++)
     {
         int x;
@@ -24,9 +24,9 @@ void TEST_CASES()
         if (x > 0)
             ps += x;
         else
-            ns += x;
+            ne += x;
     }
-    cout << -ps - ns << "\n";
+    cout << -ps - ne << "\n";
 }
 
 int32_t main()
