@@ -14,69 +14,28 @@ typedef pair<int, int> pii;
 
 void TEST_CASES()
 {
-    // int n, p;
-    // cin >> n >> p;
-    // vector<int> a(n);
-    // vector<int> b(n);
-    // for (int i = 0; i < n; i++)
-    //     cin >> a[i];
-    // for (int i = 0; i < n; i++)
-    //     cin >> b[i];
-
-    // sort(a.begin(), a.end());
-    // sort(b.begin(), b.end());
-    // int sum = 0, target = 0;
-    // for (int i = 0; i < n; i++)
-    // {
-    //     if (b[i] > p || target == n - 1)
-    //         break;
-    //     if (a[i] < (n - target - 1))
-    //     {
-    //         sum += (b[i] * a[i]);
-    //         target += a[i];
-    //     }
-    //     else
-    //     {
-    //         sum += (b[i] * (n - target - 1));
-    //         target = n - 1;
-    //         break;
-    //     }
-    // }
-    // sum += p * (n - target);
-    // cout << sum << "\n";
-
-    int n, p;
+    ll n, p;
     cin >> n >> p;
-    vector<vector<int>> a(n, vector<int>(2));
+    vector<ll> a(n), b(n);
+    vector<pair<ll, ll>> vp;
     for (int i = 0; i < n; i++)
-        cin >> a[i][0];
-    for (int i = 0; i < n; i++)
-        cin >> a[i][1];
-    sort(a.begin(), a.end());
-
-    for(auto i : a)cout<<<<" ";
-    cout<<"\n";
-
-    int sum = 0, target = 0;
+        cin >> a[i];
     for (int i = 0; i < n; i++)
     {
-        if (a[i][1] > p || target == n - 1)
-            break;
-
-        if (a[i][0] < (n - target - 1))
-        {
-            sum += (a[i][1] * a[i][0]);
-            target += a[i][0];
-        }
-        else
-        {
-            sum += (a[i][1] * (n - target - 1));
-            target = n - 1;
-            break;
-        }
+        cin >> b[i];
+        vp.push_back({min(p, b[i]), a[i]});
     }
-    sum += p * (n - target);
-    // cout << sum << "\n";
+
+    sort(vp.begin(), vp.end());
+    // for(auto i : vp)cout<<i.first<<" "<<i.second<<"\n";
+    ll ans = p;
+    ll per = n - 1;
+    for (int i = 0; i < n-1; i++)
+    {
+        ans += min(per, vp[i].second) * vp[i].first;
+        per -= min(per, vp[i].second);
+    }
+    cout << ans << "\n";
 }
 
 int32_t main()
