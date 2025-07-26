@@ -48,12 +48,3 @@ Each directory contains problem-specific `.cpp`, `.py`, files named with the pro
 
 ---
 
-## 🌱 How to Use
-
-You can browse through the problems to:
-
-* Understand various algorithmic patterns.
-* Learn optimized coding techniques.
-* Practice by replicating solutions with variations.
-
----
