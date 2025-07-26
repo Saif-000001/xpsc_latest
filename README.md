@@ -1,7 +1,4 @@
 # 🧠 Competitive Programming Practice
-
-Welcome to my **Competitive Programming Practice** repository!
-
 Over the past **6 months**, I have been solving at least **5 problems every day** across platforms like **Codeforces, CodeChef, LeetCode, AtCoder, and HackerRank**. This repository contains all the **code solutions** I've written during this consistent journey.
 
 ---
